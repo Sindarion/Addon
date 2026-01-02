@@ -1,0 +1,15 @@
+{
+  "name": "Utility Add-on",
+  "version": "1.0.0",
+  "slug": "utility_addon",
+  "description": "Angular frontend with ASP.NET Core API",
+  "startup": "services",
+  "arch": [
+    "aarch64",
+    "amd64"
+  ],
+  "boot": "auto",
+  "ingress": true,
+  "ingress_port": 5000,
+  "panel_icon": "mdi:application"
+}
