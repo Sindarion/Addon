@@ -4,11 +4,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddEnvironmentVariables();
 
-var db = builder.Configuration["DB"];
+//var db = Environment.GetEnvironmentVariable("DB");
+
+var config = builder.Configuration.Get<AppConfiguration>();
+Console.WriteLine($"DB from config: {config.Db}");
 
 builder.Services.Configure<AppConfiguration>(builder.Configuration);
 
-Console.WriteLine($"Using database: {db}");
+//Console.WriteLine($"Using database: {db}");
 
 // Add services to the container.
 

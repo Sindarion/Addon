@@ -2,6 +2,6 @@
 {
     public class AppConfiguration
     {
-        public string DB { get; set; } = string.Empty;
+        public string Db { get; set; } = string.Empty;
     }
 }
