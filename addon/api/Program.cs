@@ -6,6 +6,8 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+builder.WebHost.UseUrls("http://0.0.0.0:5000");
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -17,5 +19,8 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+// fallback all other routes to index.html (Angular router support)
+app.MapFallbackToFile("index.html");
 
 app.Run();
