@@ -11,6 +11,9 @@ Console.WriteLine($"DB from config: {config.Db}");
 
 builder.Services.Configure<AppConfiguration>(builder.Configuration);
 
+var db = Environment.GetEnvironmentVariable("DB") ?? "default.db";
+Console.WriteLine($"Using database2: {db}");
+
 //Console.WriteLine($"Using database: {db}");
 
 // Add services to the container.
