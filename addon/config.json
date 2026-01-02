@@ -1,6 +1,6 @@
 {
   "name": "Utility Add-on",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "slug": "utility_addon",
   "description": "Angular frontend with ASP.NET Core API",
   "startup": "services",
@@ -8,5 +8,8 @@
   "boot": "auto",
   "ingress": true,
   "ingress_port": 5000,
-  "panel_icon": "mdi:application"
+  "panel_icon": "mdi:application",
+  "options": {
+    "db": ""
+  }
 }
