@@ -22,7 +22,7 @@ COPY --from=build /app/publish ./
 COPY --from=ui-build /ui/dist/ui/browser ./wwwroot
 
 # Make sure ASP.NET binds to all interfaces
-ENV DOTNET_URLS=http://0.0.0.0:5000
+ENV ASPNETCORE_URLS=http://0.0.0.0:5000
 EXPOSE 5000
 
 ENTRYPOINT ["dotnet", "api.dll"]
