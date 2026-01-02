@@ -1,6 +1,12 @@
+using api.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-var db = Environment.GetEnvironmentVariable("DB");
+builder.Configuration.AddEnvironmentVariables();
+
+var db = builder.Configuration["DB"];
+
+builder.Services.Configure<AppConfiguration>(builder.Configuration);
 
 Console.WriteLine($"Using database: {db}");
 
