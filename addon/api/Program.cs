@@ -1,5 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
 
+var db = Environment.GetEnvironmentVariable("DB");
+
+Console.WriteLine($"Using database: {db}");
+
 // Add services to the container.
 
 builder.Services.AddControllers();
