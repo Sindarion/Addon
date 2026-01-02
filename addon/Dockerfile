@@ -7,7 +7,7 @@ COPY ui/ ./
 RUN npm run build -- --configuration production --base-href ./
 
 # Build ASP.NET Core
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 COPY api/*.csproj ./api/
 RUN dotnet restore ./api/api.csproj
