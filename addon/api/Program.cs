@@ -7,7 +7,7 @@ builder.Configuration.AddEnvironmentVariables();
 //var db = Environment.GetEnvironmentVariable("DB");
 
 var config = builder.Configuration.Get<AppConfiguration>();
-Console.WriteLine($"DB from config: {config.Db}");
+Console.WriteLine($"DB from config: {config.db}");
 
 builder.Services.Configure<AppConfiguration>(builder.Configuration);
 
