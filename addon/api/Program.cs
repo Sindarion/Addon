@@ -17,7 +17,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
-
+app.UseStaticFiles();
 app.MapControllers();
 
 // fallback all other routes to index.html (Angular router support)
