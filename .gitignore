@@ -5,5 +5,6 @@
 /.vs
 /addon/api/.vs
 /addon/ui/.vscode
-/addon/api/bin/Debug/net10.0
+/addon/api/bin/
+/addon/api/obj/
 /addon/api/dev.options.json

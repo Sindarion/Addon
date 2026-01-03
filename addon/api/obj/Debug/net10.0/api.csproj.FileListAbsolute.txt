@@ -33,3 +33,4 @@ C:\Projects\Addon\addon\api\obj\Debug\net10.0\refint\api.dll
 C:\Projects\Addon\addon\api\obj\Debug\net10.0\api.pdb
 C:\Projects\Addon\addon\api\obj\Debug\net10.0\api.genruntimeconfig.cache
 C:\Projects\Addon\addon\api\obj\Debug\net10.0\ref\api.dll
+C:\Projects\Addon\addon\api\bin\Debug\net10.0\dev.options.json

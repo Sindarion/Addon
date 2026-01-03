@@ -6,11 +6,11 @@
   },
   "servers": [
     {
-      "url": "http://localhost:5265"
+      "url": "http://0.0.0.0:5000"
     }
   ],
   "paths": {
-    "/WeatherForecast": {
+    "/api/WeatherForecast": {
       "get": {
         "tags": [
           "WeatherForecast"
