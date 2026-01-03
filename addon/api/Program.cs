@@ -5,21 +5,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddEnvironmentVariables();
 
-var db = Environment.GetEnvironmentVariable("TEST");
-Console.WriteLine($"DB from config000: {db}");
+//var config = builder.Configuration.Get<AppConfiguration>();
 
-var config = builder.Configuration.Get<AppConfiguration>();
-Console.WriteLine($"DB from config: {config.db}");
-
-builder.Services.Configure<AppConfiguration>(builder.Configuration);
-
-var db2 = Environment.GetEnvironmentVariable("db") ?? "default.db";
-Console.WriteLine($"Using database2: {db2}");
-
-//Console.WriteLine($"Using database: {db}");
+//builder.Services.Configure<AppConfiguration>(builder.Configuration);
 
 // Add services to the container.
-
 
 var optionsPath = "/data/options.json";
 
@@ -36,8 +26,6 @@ else
 var optionsJson = File.ReadAllText(optionsPath);
 var haOptions = JsonSerializer.Deserialize<AppConfiguration>(optionsJson);
 
-Console.WriteLine($"DB from HA Test: {haOptions.Test}");
-Console.WriteLine($"DB from HA test: {haOptions.test}");
 Console.WriteLine($"DB from HA DATABASE_CONNECTION_STRING: {haOptions.DATABASE_CONNECTION_STRING}");
 
 builder.Services.AddControllers();
