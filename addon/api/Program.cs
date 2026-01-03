@@ -1,4 +1,5 @@
 using api.Models;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +33,12 @@ else
     Console.WriteLine("FILE EXISTS!!!!");
 }
 
-    builder.Services.AddControllers();
+var optionsJson = File.ReadAllText(optionsPath);
+var haOptions = JsonSerializer.Deserialize<AppConfiguration>(optionsJson);
+
+Console.WriteLine($"DB from HA options: {haOptions.db}");
+
+builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
