@@ -38,6 +38,7 @@ var haOptions = JsonSerializer.Deserialize<AppConfiguration>(optionsJson);
 
 Console.WriteLine($"DB from HA Test: {haOptions.Test}");
 Console.WriteLine($"DB from HA test: {haOptions.test}");
+Console.WriteLine($"DB from HA DATABASE_CONNECTION_STRING: {haOptions.DATABASE_CONNECTION_STRING}");
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
