@@ -10,12 +10,10 @@
   "ingress_port": 5000,
   "panel_icon": "mdi:application",
   "options": {
-    "DATABASE_CONNECTION_STRING": "a",
-    "test": "test"
+    "DATABASE_CONNECTION_STRING": "a"
   },
   "schema": {
-    "DATABASE_CONNECTION_STRING": "str",
-    "test": "str"
+    "DATABASE_CONNECTION_STRING": "str"
   },
   "test": "test"
 }

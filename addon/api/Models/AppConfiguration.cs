@@ -2,6 +2,6 @@
 {
     public class AppConfiguration
     {
-        public string DATABASE_CONNECTION_STRING { get; set; }
+        public string DATABASE_CONNECTION_STRING { get; set; } = string.Empty;
     }
 }

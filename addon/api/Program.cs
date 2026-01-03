@@ -24,9 +24,11 @@ else
 }
 
 var optionsJson = File.ReadAllText(optionsPath);
-var haOptions = JsonSerializer.Deserialize<AppConfiguration>(optionsJson);
+var appConfig = JsonSerializer.Deserialize<AppConfiguration>(optionsJson) ?? throw new InvalidOperationException("Failed to deserialize AppConfiguration from options.json.");
 
-Console.WriteLine($"DB from HA DATABASE_CONNECTION_STRING: {haOptions.DATABASE_CONNECTION_STRING}");
+Console.WriteLine($"DB from HA DATABASE_CONNECTION_STRING: {appConfig.DATABASE_CONNECTION_STRING}");
+
+builder.Services.AddSingleton(appConfig);
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

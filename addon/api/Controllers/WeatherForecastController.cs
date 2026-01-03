@@ -1,11 +1,14 @@
+using api.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        private readonly AppConfiguration _appConfiguration;
+
         private static readonly string[] Summaries =
         [
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -26,8 +29,7 @@ namespace api.Controllers
         [HttpGet(Name = "GetConfig")]
         public dynamic GetConfig()
         {
-            var db = Environment.GetEnvironmentVariable("TEST");
-            return new { db = db };
+            return _appConfiguration.DATABASE_CONNECTION_STRING;
         }
     }
 }
