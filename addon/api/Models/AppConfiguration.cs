@@ -3,6 +3,7 @@
     public class AppConfiguration
     {
         public string db { get; set; }
-        public string Test { get; set; } = string.Empty;
+        public string Test { get; set; }
+        public string test { get; set; }
     }
 }
