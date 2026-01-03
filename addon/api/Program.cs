@@ -19,6 +19,15 @@ Console.WriteLine($"Using database2: {db2}");
 
 // Add services to the container.
 
+
+var optionsPath = "/data/options.json";
+
+if (!File.Exists(optionsPath))
+{
+    //throw new Exception("Home Assistant options file not found");
+    Console.WriteLine($"config file not found");
+}
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
