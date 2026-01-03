@@ -11,17 +11,21 @@ builder.Configuration.AddEnvironmentVariables();
 
 // Add services to the container.
 
-var optionsPath = "/data/options.json";
+//var optionsPath = "/data/options.json";
 
-if (!File.Exists(optionsPath))
-{
-    //throw new Exception("Home Assistant options file not found");
-    Console.WriteLine($"config file not found");
-}
-else
-{
-    Console.WriteLine("FILE EXISTS!!!!");
-}
+var optionsPath = builder.Environment.IsDevelopment()
+    ? "dev.options.json"
+    : "/data/options.json";
+
+//if (!File.Exists(optionsPath))
+//{
+//    //throw new Exception("Home Assistant options file not found");
+//    Console.WriteLine($"config file not found");
+//}
+//else
+//{
+//    Console.WriteLine("FILE EXISTS!!!!");
+//}
 
 var optionsJson = File.ReadAllText(optionsPath);
 var appConfig = JsonSerializer.Deserialize<AppConfiguration>(optionsJson) ?? throw new InvalidOperationException("Failed to deserialize AppConfiguration from options.json.");
