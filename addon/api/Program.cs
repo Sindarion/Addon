@@ -11,7 +11,7 @@ Console.WriteLine($"DB from config: {config.db}");
 
 builder.Services.Configure<AppConfiguration>(builder.Configuration);
 
-var db = Environment.GetEnvironmentVariable("DB") ?? "default.db";
+var db = Environment.GetEnvironmentVariable("db") ?? "default.db";
 Console.WriteLine($"Using database2: {db}");
 
 //Console.WriteLine($"Using database: {db}");
