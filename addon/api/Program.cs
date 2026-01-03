@@ -4,15 +4,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddEnvironmentVariables();
 
-//var db = Environment.GetEnvironmentVariable("DB");
+var db = Environment.GetEnvironmentVariable("DB");
+Console.WriteLine($"DB from config000: {db}");
 
 var config = builder.Configuration.Get<AppConfiguration>();
 Console.WriteLine($"DB from config: {config.db}");
 
 builder.Services.Configure<AppConfiguration>(builder.Configuration);
 
-var db = Environment.GetEnvironmentVariable("db") ?? "default.db";
-Console.WriteLine($"Using database2: {db}");
+var db2 = Environment.GetEnvironmentVariable("db") ?? "default.db";
+Console.WriteLine($"Using database2: {db2}");
 
 //Console.WriteLine($"Using database: {db}");
 

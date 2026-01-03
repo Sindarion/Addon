@@ -2,6 +2,6 @@
 {
     public class AppConfiguration
     {
-        public string db { get; set; } = "test";
+        public string db { get; set; }
     }
 }
