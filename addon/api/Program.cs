@@ -4,7 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddEnvironmentVariables();
 
-var db = Environment.GetEnvironmentVariable("DB");
+var db = Environment.GetEnvironmentVariable("TEST");
 Console.WriteLine($"DB from config000: {db}");
 
 var config = builder.Configuration.Get<AppConfiguration>();
