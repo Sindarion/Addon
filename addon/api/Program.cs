@@ -27,8 +27,12 @@ if (!File.Exists(optionsPath))
     //throw new Exception("Home Assistant options file not found");
     Console.WriteLine($"config file not found");
 }
+else
+{
+    Console.WriteLine("FILE EXISTS!!!!");
+}
 
-builder.Services.AddControllers();
+    builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
