@@ -1,6 +1,6 @@
 {
   "name": "Utility Add-on",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "slug": "utility_addon",
   "description": "Angular frontend with ASP.NET Core API",
   "startup": "services",
