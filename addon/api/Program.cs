@@ -36,7 +36,8 @@ else
 var optionsJson = File.ReadAllText(optionsPath);
 var haOptions = JsonSerializer.Deserialize<AppConfiguration>(optionsJson);
 
-Console.WriteLine($"DB from HA options: {haOptions.Test}");
+Console.WriteLine($"DB from HA Test: {haOptions.Test}");
+Console.WriteLine($"DB from HA test: {haOptions.test}");
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
