@@ -24,7 +24,8 @@ export class Header implements OnInit {
         items: [
           {
             label: 'To Do',
-            icon: 'pi pi-hammer'
+            icon: 'pi pi-hammer',
+            routerLink: '/tasks'
           },
           {
             label: 'To Buy',

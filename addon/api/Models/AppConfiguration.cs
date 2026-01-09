@@ -2,6 +2,7 @@
 {
     public class AppConfiguration
     {
-        public string DATABASE_CONNECTION_STRING { get; set; } = string.Empty;
+        public string SUPABASE_URL { get; set; } = string.Empty;
+        public string SUPABASE_KEY { get; set; } = string.Empty;
     }
 }

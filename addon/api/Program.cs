@@ -1,42 +1,52 @@
 using api.Models;
+using api.Services;
+using api.Services.Interfaces;
+using Supabase;
 using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddEnvironmentVariables();
 
-//var config = builder.Configuration.Get<AppConfiguration>();
-
-//builder.Services.Configure<AppConfiguration>(builder.Configuration);
-
-// Add services to the container.
-
-//var optionsPath = "/data/options.json";
-
 var optionsPath = builder.Environment.IsDevelopment()
     ? "dev.options.json"
     : "/data/options.json";
 
-//if (!File.Exists(optionsPath))
-//{
-//    //throw new Exception("Home Assistant options file not found");
-//    Console.WriteLine($"config file not found");
-//}
-//else
-//{
-//    Console.WriteLine("FILE EXISTS!!!!");
-//}
-
 var optionsJson = File.ReadAllText(optionsPath);
 var appConfig = JsonSerializer.Deserialize<AppConfiguration>(optionsJson) ?? throw new InvalidOperationException("Failed to deserialize AppConfiguration from options.json.");
 
-Console.WriteLine($"DB from HA DATABASE_CONNECTION_STRING: {appConfig.DATABASE_CONNECTION_STRING}");
+builder.Services.AddSingleton<Client>(sp =>
+{
+    var client = new Supabase.Client(
+        appConfig.SUPABASE_URL,
+        appConfig.SUPABASE_KEY,
+        new SupabaseOptions
+        {
+            AutoRefreshToken = true,
+            AutoConnectRealtime = false
+        });
 
-builder.Services.AddSingleton(appConfig);
+    // IMPORTANT: Initialize
+    client.InitializeAsync().GetAwaiter().GetResult();
+
+    return client;
+});
+
+builder.Services.AddScoped<ITaskService, TaskService>();
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.AllowAnyOrigin() // Angular dev server
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
 
 if (builder.Environment.IsProduction())
 {
@@ -50,6 +60,8 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseCors();
 
 app.UseAuthorization();
 app.UseStaticFiles();
