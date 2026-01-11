@@ -1,6 +1,7 @@
 using api.Models;
 using api.Services;
 using api.Services.Interfaces;
+using FastEndpoints;
 using Supabase;
 using System.Text.Json;
 
@@ -26,16 +27,17 @@ builder.Services.AddSingleton<Client>(sp =>
             AutoConnectRealtime = false
         });
 
-    // IMPORTANT: Initialize
     client.InitializeAsync().GetAwaiter().GetResult();
 
     return client;
 });
 
-builder.Services.AddScoped<ITaskService, TaskService>();
+builder.Services.AddScoped<IToDoService, ToDoService>();
+builder.Services.AddScoped<ILinkService, LinkService>();
 
-builder.Services.AddControllers();
-builder.Services.AddOpenApi();
+builder.Services.AddFastEndpoints();
+
+builder.Services.AddAuthorization();
 
 builder.Services.AddCors(options =>
 {
@@ -58,14 +60,14 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    
 }
 
 app.UseCors();
+app.UseFastEndpoints();
 
 app.UseAuthorization();
 app.UseStaticFiles();
-app.MapControllers();
 
 // fallback all other routes to index.html (Angular router support)
 app.MapFallbackToFile("index.html");

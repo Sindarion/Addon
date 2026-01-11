@@ -3,9 +3,12 @@ using Supabase.Postgrest.Attributes;
 
 namespace api.Models
 {
-    [Table("Tasks")]
-    public class TaskModel : BaseModel
+    [Table("ToDos")]
+    public class ToDoModel : BaseModel
     {
+        [Column("Title")]
+        public string Title { get; set; } = string.Empty;
+
         [Column("Description")]
         public string Description { get; set; } = string.Empty;
 
