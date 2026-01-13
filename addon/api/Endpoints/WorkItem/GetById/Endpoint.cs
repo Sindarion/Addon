@@ -1,21 +1,21 @@
 ﻿using api.Services.Interfaces;
 using FastEndpoints;
 
-namespace ToDo.GetById
+namespace WorkItem.GetById
 {
-    internal sealed class Endpoint(IToDoService toDoService) : Endpoint<Request, Response, Mapper>
+    internal sealed class Endpoint(IWorkItemService workItemService) : Endpoint<Request, Response, Mapper>
     {
-        private readonly IToDoService _toDoService = toDoService;
+        private readonly IWorkItemService _workItemService = workItemService;
 
         public override void Configure()
         {
-            Get("api/ToDo/{Id}");
+            Get("api/WorkItem/{Id}");
             AllowAnonymous();
         }
 
         public override async Task HandleAsync(Request r, CancellationToken c)
         {
-            var result = await _toDoService.GetByIdAsync(r.Id);
+            var result = await _workItemService.GetByIdAsync(r.Id);
 
             if (result == null)
                 await Send.NotFoundAsync(c);

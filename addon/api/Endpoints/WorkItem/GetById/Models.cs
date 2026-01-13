@@ -2,7 +2,7 @@
 using FastEndpoints;
 using FluentValidation;
 
-namespace ToDo.GetById
+namespace WorkItem.GetById
 {
     internal sealed class Request
     {

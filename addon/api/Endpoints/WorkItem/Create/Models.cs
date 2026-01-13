@@ -1,7 +1,8 @@
-﻿using api.Enums;
+﻿using api.DTOs;
+using api.Enums;
 using FastEndpoints;
 
-namespace ToDo.Create
+namespace Create.WorkItem
 {
     internal sealed class Request
     {
@@ -9,7 +10,7 @@ namespace ToDo.Create
         public string Description { get; init; } = string.Empty;
         public EPriority Priority { get; init; }
         public EStatus Status { get; init; }
-        public List<CreateLinkRequest> Links { get; init; } = [];
+        public List<LinkDto> Links { get; init; } = [];
 
         internal sealed class Validator : Validator<Request>
         {
@@ -21,6 +22,4 @@ namespace ToDo.Create
     }
 
     internal sealed record Response(Guid Id);
-
-    internal sealed record CreateLinkRequest(string Title, string Url);
 }

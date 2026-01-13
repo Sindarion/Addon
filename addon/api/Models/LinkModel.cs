@@ -1,21 +1,23 @@
-﻿using api.Enums;
-using Supabase.Postgrest.Attributes;
+﻿using Supabase.Postgrest.Attributes;
 
 namespace api.Models
 {
-    [Table("Links")]
+    [Table("links")]
     public class LinkModel : BaseModel
     {
-        [Column("OwnerId")]
-        public Guid OwnerId { get; set; }
+        [Column("work_item_id")]
+        public Guid? WorkItemId { get; set; }
 
-        [Column("OwnerType")]
-        public ELinkOwnerType OwnerType { get; set; }
+        [Column("expense_id")]
+        public Guid? ExpenseId { get; set; }
 
-        [Column("Title")]
-        public string Title { get; set; } = string.Empty;
+        [Column("idea_id")]
+        public Guid? IdeaId { get; set; }
 
-        [Column("Url")]
+        [Column("description")]
+        public string Description { get; set; } = string.Empty;
+
+        [Column("url")]
         public string Url { get; set; } = string.Empty;
     }
 }

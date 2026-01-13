@@ -5,6 +5,6 @@ namespace api.Services.Interfaces
 {
     public interface ILinkService
     {
-        Task AddLinksAsync(Guid OwnerId, List<LinkModel> links, ELinkOwnerType type);
+        Task AddLinksAsync(List<LinkModel> links);
     }
 }

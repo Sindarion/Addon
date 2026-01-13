@@ -4,13 +4,13 @@ namespace api.Models
 {
     public abstract class BaseModel : Supabase.Postgrest.Models.BaseModel
     {
-        [PrimaryKey("Id")]
+        [PrimaryKey("id")]
         public Guid Id { get; set; }
 
-        [Column("CreatedAt")]
+        [Column("created_at")]
         public DateTime CreatedAt { get; set; }
 
-        [Column("UpdatedAt")]
+        [Column("updated_at")]
         public DateTime? UpdatedAt { get; set; }
     }
 }

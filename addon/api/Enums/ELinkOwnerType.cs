@@ -1,8 +1,8 @@
-﻿namespace api.Enums
-{
-    public enum ELinkOwnerType
-    {
-        Task,
-        Idea
-    }
-}
+﻿//namespace api.Enums
+//{
+//    public enum ELinkOwnerType
+//    {
+//        Task,
+//        Idea
+//    }
+//}

@@ -32,7 +32,7 @@ builder.Services.AddSingleton<Client>(sp =>
     return client;
 });
 
-builder.Services.AddScoped<IToDoService, ToDoService>();
+builder.Services.AddScoped<IWorkItemService, WorkItemService>();
 builder.Services.AddScoped<ILinkService, LinkService>();
 
 builder.Services.AddFastEndpoints();

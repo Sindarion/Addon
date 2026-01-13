@@ -1,16 +1,16 @@
-﻿using api.Models;
+﻿using api.DTOs;
+using api.Models;
 using FastEndpoints;
 
-namespace ToDo.Create
+namespace Create.WorkItem
 {
-    internal sealed class Mapper : Mapper<Request, Response, ToDoModel>
+    internal sealed class Mapper : Mapper<Request, Response, WorkItemModel>
     {
-        public override Response FromEntity(ToDoModel e) => new(e.Id);
+        public override Response FromEntity(WorkItemModel e) => new(e.Id);
 
-        public override ToDoModel ToEntity(Request r)
+        public override WorkItemModel ToEntity(Request r)
         {
-            // Map request to entity
-            return new ToDoModel
+            return new WorkItemModel
             {
                 Title = r.Title,
                 Description = r.Description,
@@ -21,11 +21,11 @@ namespace ToDo.Create
 
         public static List<LinkModel> ToLinkModels(
             Guid toDoId,
-            List<CreateLinkRequest> links)
+            List<LinkDto> links)
             => [.. links.Select(l => new LinkModel
             {
-                OwnerId = toDoId,
-                Title = l.Title,
+                //OwnerId = toDoId,
+                Description = l.Title,
                 Url = l.Url,
             })];
     }
